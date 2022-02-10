@@ -13,16 +13,20 @@ namespace MyDuck
         {
             MallardDuck mallardDuck = new MallardDuck();
             ReadheadDuck readheadDuck = new ReadheadDuck();
+            RubberDuck rubberDuck = new RubberDuck();
+            DecoyDuck decoyDuck = new DecoyDuck();
 
 
+            Duck[] ducks = new Duck[] { mallardDuck, readheadDuck, rubberDuck, decoyDuck };
 
-            Duck[] ducks = new Duck[] { mallardDuck, readheadDuck };
-
-            foreach ( var x in ducks)
+            for ( int i=0; i<ducks.Length; i++)
             {
-                Console.WriteLine(x.Quack());
-                Console.WriteLine(x.Swim());
-                Console.WriteLine(x.Display());
+                if (ducks[i] is IQuackable)
+                    Console.WriteLine((ducks[i] as IQuackable).Quack());
+                if (ducks[i] is IFlyable)
+                    Console.WriteLine((ducks[i] as IFlyable).Fly());
+                Console.WriteLine(ducks[i].Swim());
+                Console.WriteLine(ducks[i].Display());
                 Console.WriteLine();
             }
 
