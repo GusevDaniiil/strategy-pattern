@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 namespace ClassLibrary1
 {
 
-    public class MallardDuck : Duck, IQuackable, IFlyable
+    public class MallardDuck : Duck
     {
-        public string Fly()
+        public MallardDuck()
         {
-            return "Fly" + this.GetType();
-        }
-        public string Quack()
-        {
-            return "Quack" + this.GetType();
-        }
-        public override string Display()
-        {
-            return "Display " + this.GetType();
+           quackBehavior = new DQuack();
+            flyBehavior = new FlyWithWings();
         }
     }
+   
 }

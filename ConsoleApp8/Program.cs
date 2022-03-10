@@ -16,18 +16,20 @@ namespace MyDuck
             RubberDuck rubberDuck = new RubberDuck();
             DecoyDuck decoyDuck = new DecoyDuck();
 
+            IFlyBehavior flyBehavior = new FlyNoWay();
+            IQuackBehavior quackBehavior = new DQuack();
+
+            mallardDuck.SetFlyBehavior(flyBehavior);
+            rubberDuck.SetQuackBehavior(quackBehavior);
 
             Duck[] ducks = new Duck[] { mallardDuck, readheadDuck, rubberDuck, decoyDuck };
 
-            for ( int i=0; i<ducks.Length; i++)
+            for (int i = 0; i < ducks.Length; i++)
             {
-                if (ducks[i] is IQuackable)
-                    Console.WriteLine((ducks[i] as IQuackable).Quack());
-                if (ducks[i] is IFlyable)
-                    Console.WriteLine((ducks[i] as IFlyable).Fly());
-                Console.WriteLine(ducks[i].Swim());
                 Console.WriteLine(ducks[i].Display());
-                Console.WriteLine();
+                Console.WriteLine(ducks[i].Swim());
+                Console.WriteLine(ducks[i].PerformFly());
+                Console.WriteLine(ducks[i].PerformQuack() + "\n");
             }
 
             Console.ReadKey();

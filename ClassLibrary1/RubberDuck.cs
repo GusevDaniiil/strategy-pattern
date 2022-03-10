@@ -8,9 +8,10 @@ namespace ClassLibrary1
 {
     public class RubberDuck: Duck
     {
-        public override string Display()
+        public RubberDuck()
         {
-            return "Display " + this.GetType();
+            flyBehavior = new FlyNoWay();
+            quackBehavior = new Squeack();
         }
     }
 }
